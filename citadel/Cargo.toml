@@ -1,0 +1,4 @@
+[workspace]
+edition = '2021'
+members = [ "citadel-core","citadel-server"]
+resolver = "2"

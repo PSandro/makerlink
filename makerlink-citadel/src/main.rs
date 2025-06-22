@@ -6,28 +6,48 @@
 //
 // Copyright (C) 2025  Sandro Pischinger <mail+makerlink@sandropischinger.de>
 
+use std::sync::Arc;
+
 use axum::{
-    http::{StatusCode, Uri}, response::IntoResponse,
-    routing::get, Router,
+    extract::State, http::{StatusCode, Uri}, response::{Html, IntoResponse}, routing::get, Router
 };
+use tower_http::services::ServeDir;
+use minijinja::{context, Environment};
 
-
-pub async fn index() -> &'static str {
-    "1nd3x"
+struct AppState {
+    tpl_env: Environment<'static>,
 }
 
-pub async fn fallback(uri: Uri) -> impl IntoResponse {
+async fn index(
+    State(state): State<Arc<AppState>>
+    ) -> Result<Html<String>, StatusCode> {
+    let tpl = state.tpl_env.get_template("index").unwrap();
+
+    Ok(Html(tpl.render(context! {}).unwrap()))
+}
+
+async fn fallback(uri: Uri) -> impl IntoResponse {
     (
         StatusCode::NOT_FOUND,
         format!("No route {}", uri)
     )
 }
 
-pub async fn run() {
+async fn run() {
+
+    let mut tpl_env = Environment::new();
+    tpl_env.add_template("base", include_str!("../templates/base.html"))
+        .unwrap();
+    tpl_env.add_template("index", include_str!("../templates/index.html"))
+        .unwrap();
+
+    let app_state = Arc::new(AppState { tpl_env} );
 
     let app = Router::new()
         .fallback(fallback)
-        .route("/", get(index));
+        .nest_service("/assets", ServeDir::new("assets"))
+        .route("/", get(index))
+        .with_state(app_state);
 
     let listener = tokio::net::TcpListener::bind("[::]:5000")
         .await

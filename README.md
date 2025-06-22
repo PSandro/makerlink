@@ -22,9 +22,9 @@ In a MakerSpace, creativity should never be interrupted by cumbersome booking sy
 ┌──────────────────────────────────────────────┐          
 │┌────────────────┐      ┌────────────────────┐│          
 ││                │ API  │                    ││          
-││   Morty        ┼──────►    Citadel         ││          
+││   Database     ┼──────┼    Citadel         ││          
 ││                │      │                    ││          
-││ (Web Frontend) │      │   (Backend)        ││ Public   
+││                │      │   (web & worker)   ││ Datacenter
 ││                │      │                    ││          
 │└────────────────┘      └───────┬▲───────────┘│          
 │                                ││            │          

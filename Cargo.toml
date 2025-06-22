@@ -1,0 +1,4 @@
+[workspace]
+edition = '2021'
+members = [ "makerlink-common","makerlink-citadel", "makerlink-plumbus"]
+resolver = "2"

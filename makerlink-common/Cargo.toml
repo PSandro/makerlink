@@ -1,5 +1,5 @@
 [package]
-name = "citadel-core"
+name = "makerlink-common"
 version = "0.1.0"
 edition = "2021"
 

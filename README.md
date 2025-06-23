@@ -8,6 +8,8 @@ MakerSpace Autonomy
 
 MakerLink is a mix of ERP, CRM and member portal - basically the brain of a modern MakerSpace. It's purpose is to establish a *link* between your MakerSpace CREW, the members, the machines and other resources like rooms or the coffee machine.
 
+Built by humans, w/o help of AI. Why? Not because I dislike AI, but because I love the problem.
+
 ### Motivation
 In a MakerSpace, creativity should never be interrupted by cumbersome booking systems or slow access controls. MakerLink ensures smooth, quick access to resources, so members can focus on innovation without compromising security, safety or accountability.
 

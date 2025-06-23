@@ -1,6 +1,40 @@
 {% extends "base" %}
-{% block title %}{{ super() }} | {{ title }} {% endblock %}
+<--{% block title %}{{ super() }} | {{ title }} {% endblock %}
 {% block body %}
-<h1>Index</h1>
-<p>hello world</p>
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
+      <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+          <span class="fs-4">MakerLink</span>
+        </a>
+        <hr/>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a href="#" class="nav-link active" aria-current="page">Home</a>
+          </li>
+          <li>
+            <a href="#" class="nav-link link-dark">Machines</a>
+          </li>
+          <li>
+            <a href="#" class="nav-link link-dark">Courses</a>
+          </li>
+          <hr/>
+          <li>
+            <a href="#" class="nav-link link-dark">Customers</a>
+          </li>
+          <li>
+            <a href="#" class="nav-link link-dark">Invoices</a>
+          </li>
+          <li>
+            <a href="#" class="nav-link link-dark">Reservations</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col py-3">
+      <p>hello world</p>
+    </div>
+  </div>
+</div>
 {% endblock %}

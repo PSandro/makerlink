@@ -1,0 +1,19 @@
+@startuml
+object AccessCard
+object Membership
+object Account
+object Person
+object Team
+object Permission
+object Reservation
+object Usage
+object Resource
+object ResourceType
+object ResourceGroup
+object Actuator
+object Sensor
+object IODevice
+
+IODevice --* Actuator
+IODevice --* Sensor
+@enduml

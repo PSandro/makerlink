@@ -1,19 +1,41 @@
 @startuml
 object AccessCard
-object Membership
+object Plan
 object Account
-object Person
 object Team
-object Permission
+object ResourcePermission
+ResourcePermission : expiry = "2028
 object Reservation
 object Usage
 object Resource
+Resource : tag = "PR-123"
 object ResourceType
+ResourceType : name = "Prusa Mk4"
+ResourceType : desc = "3D-printer"
+object Venue
+Venue : address = "Musterstraße"
 object ResourceGroup
-object Actuator
-object Sensor
-object IODevice
+object IODevice /' populates functions by driver '/
+object Plugin
+object IOFunction
 
-IODevice --* Actuator
-IODevice --* Sensor
+IODevice o-- IOFunction
+
+Resource --- IOFunction
+Resource --- ResourceType
+ResourceGroup --- Resource
+ResourceGroup --- ResourceGroup
+ResourceType --- Venue
+ResourceType --- Plugin
+
+Account --- AccessCard
+Account --- Plan
+Account --- Team
+Account --- Reservation
+Account --- ResourcePermission
+Reservation --- Resource
+Usage --- Resource
+
+ResourcePermission - ResourceGroup
+
 @enduml
